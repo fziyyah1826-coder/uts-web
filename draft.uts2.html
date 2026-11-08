@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Meong</title>
+    <link rel="icon" href="favicon.svg">
+    <style>
+        /* CSS Media Queries untuk Responsif */
+        @media (max-width: 700px) {
+            .articles { grid-template-columns: 1fr !important; }
+            .galeri { grid-template-columns: 1fr 1fr !important; }
+            nav a { display: inline-block; margin: 5px !important; }
+        }
+        @media (max-width: 450px) {
+            .galeri { grid-template-columns: 1fr !important; }
+        }
+
+        .a{ 
+            color: white; text-decoration: none; margin: 10px;
+        }
+    </style>
+</head>
+
+<body style="margin: 0; font-family: Arial, sans-serif; background: #fff8ed; color: #49372b; line-height: 1.6;">
+
+    <!--header-->
+
+    <header style="background: #a66b43; color: white; text-align: center; padding: 25px;">
+        <h1 style="margin: 0;">🐾 Ruang Meong</h1>
+        <p style="margin: 5px 0;">Galeri dan Cerita Kucing di Sekitar Kita</p>
+    </header>
+
+    <!-- menu navigasi -->
+
+    <nav style="background: #68452f; padding: 14px; text-align: center;">
+        <a href="#home" onclick="tampilkanHalaman('home')">Home</a> |
+        <a href="#about" onclick="tampilkanHalaman('about')">About</a> |
+        <a href="#gallery" onclick="tampilkanHalaman('gallery')">Gallery</a> |
+        <a href="#registration" onclick="tampilkanHalaman('registration')">Registration</a> |
+        <a href="#contact" onclick="tampilkanHalaman('contact')">Contact</a> |
+    </nav>
+
+    <div style="width: 90%; max-width: 1100px; margin: 25px auto;">
+
+        <!-- home-->
+
+        <div id="page-home" class="page">
+            <div style="background: #f3dfc8; padding: 8px; text-align: center; margin-bottom: 20px; border-radius: 6px;">
+                Selamat datang di Ruang Meong! Tempat berbagi cerita tentang kucing sekitar
+            </div>
+
+    <section style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+        <h2 style="margin-top: 0;">Selamat Datang di Ruang Meong!</h2>
+         <p>Ruang Meong merupakan tempat untuk mengenal, melihat, dan membaca cerita tentang kucing-kucing yang sering kita temui di lingkungan sekitar.</p>
+        <img src="images/cat.jpg" alt="Kucing lagi ngintip" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 10px;">
+    </section>
+
+    <h2>Cerita Terbaru</h2>
+
+    <!--artikel singkat-->
+    <section class="articles" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px;">
+        <article style="background: white; padding: 20px; border-radius: 12px;">
+        <img src="images/sioren.jpg" alt="Kucing oren" style="width: 100%; height: 170px; object-fit: cover; border-radius: 8px;">
+        <h3 style="margin: 10px 0 5px 0;">Si Oren yang Selalu Penasaran</h3>
+        <p>Kucing oren sering terlihat aktif dan ingin tahu dengan keadaan sekitarnya.</p>
+            <a href="https://www.alodokter.com/kucing-oren-ketahui-fakta-unik-dan-cara-merawatnya" onclick="tampilkanHalaman('artikel-sioren')" style="color: #a66b43; font-weight: bold; text-decoration: none;">selengkapnya</a>
+    </article>
+
+    <article style="background: white; padding: 20px; border-radius: 12px;">
+        <img src="images/sibelang.jpg" alt="Kucing belang" style="width: 100%; height: 170px; object-fit: cover; border-radius: 8px;">
+        <h3 style="margin: 10px 0 5px 0;">Yuk kenalan dengan Kucing Belang</h3>
+        <p>Corak bulunya unik dan setiap kucing memiliki ciri khas masing-masing.</p>
+        <a href="https://www.alodokter.com/kucing-calico-inilah-ciri-khas-dan-cara-merawatnya" onclick="tampilkanHalaman('artikel-belang')" style="color: #a66b43; font-weight: bold; text-decoration: none;">selengkapnya</a>
+    </article>
+
+    <article style="background: white; padding: 20px; border-radius: 12px;">
+        <img src="images/mengtidur.jpg" alt="Kucing tidur" style="width: 100%; height: 170px; object-fit: cover; border-radius: 8px;">
+        <h3 style="margin: 10px 0 5px 0;">Tempat Favorit untuk Tidur</h3>
+        <p>Kucing sering memilih tempat yang tenang dan nyaman untuk beristirahat.</p>
+        <a href="https://www.alodokter.com/kenapa-kucing-tidur-terus-inilah-8-penyebabnya" onclick="tampilkanHalaman('artikel-istirahat')" style="color: #a66b43; font-weight: bold; text-decoration: none;">selengkapnya</a>
+    </article>
+    </section>
+
+    <aside style="background: #f3dfc8; padding: 20px; border-radius: 12px; margin-bottom: 20px; font-size: small;">
+        <h3 style="margin-top: 0;">Info Ruang Meong</h3>
+        <p>Website sederhana untuk mendokumentasikan keberadaan dan kebiasaan kucing di lingkungan sekitar kita.</p>
+        <h3>Jam Sekarang</h3>
+        <p id="jam" style="margin-bottom: 0;">Memuat jam...</p>
+        </aside>
+    </div>
+
+    <!--about-->
+
+    <div id="page-about" class="page" style="display: none;">
+    <section style="background: white; 
+        padding: 22px; 
+        border-radius: 12px; 
+        margin-bottom: 18px;">
+
+        <h2 style="color: #8a5a3b; margin-top: 0;">Tentang Ruang Meong</h2>
+        <p>Ruang Meong adalah website sederhana yang dibuat 
+            untuk tempat berbagi foto, informasi, 
+            dan cerita tentang kucing-kucing yang ada di sekitar 
+            lingkungan tempat tinggal.</p>
+        <p>Ide website ini muncul dari hal sederhana, 
+            yaitu sering melihat kucing berkeliaran di sekitar rumah. 
+            Setiap kucing memiliki bentuk, warna, dan kebiasaan 
+            yang berbeda sehingga menarik untuk diamati.</p>
+        </section>
+        
+        <section style="background: white; padding: 22px; 
+        border-radius: 12px; 
+        margin-bottom: 18px;">
+
+            <h2 style="color: #8a5a3b; margin-top: 0;">Sejarah Singkat</h2>
+            <p>Ruang Meong dibuat dari ketertarikan terhadap 
+                kucing-kucing di lingkungan sekitar. 
+                Website ini dikembangkan sebagai jurnal digital kecil 
+                untuk menyimpan cerita dan foto mereka yang kalian temui.</p>
+        </section>
+        
+        <section style="background: white; padding: 22px; border-radius: 12px; margin-bottom: 18px;">
+            <h2 style="color: #8a5a3b; margin-top: 0;">Visi & Misi</h2>
+            <p><b>Visi:</b> Menjadi ruang website sederhana untuk mengenal dan menghargai keberadaan kucing di lingkungan sekitar kita.</p>
+            <p><b>Misi:</b></p>
+            <ul>
+                <li>Mengumpulkan cerita tentang kucing sekitar.</li>
+                <li>Membagikan foto kucing yang menarik.</li>
+                <li>Mengajak pengunjung lebih peduli terhadap hewan.</li>
+            </ul>
+        </section>
+
+        <section style="background: white; padding: 22px; border-radius: 12px; margin-bottom: 18px;">
+        <h2 style="color: #8a5a3b; margin-top: 0;">Tujuan dan Pengelola</h2>
+            <p>Tujuan website ini adalah mendokumentasikan kucing sekitar dan memberikan informasi ringan bagi pengunjung.</p>
+            <p style="font-size: small;"><b>Pengelola:</b> Fauziyyah Nurzahra</p>
+            <p style="margin-bottom: 0; font-size: small;"><b>Bagian:</b> Penulis cerita, pengelola galeri, dan pembuat website.</p>
+        </section>
+        </div>
+
+        <!--galery-->
+
+<div id="page-gallery" class="page" style="display: none;">
+    <h2>Galeri Kucing</h2>
+    <p>Berikut adalah kumpulan foto kucing yang didapatkan di lingkungan sekitar.</p>
+
+    <div class="galeri" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;">
+    <div style="background: white; padding: 12px; border-radius: 12px;">
+        <img src="images/kucing1.jpg" alt="si lincah" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px;">
+        <p style="margin: 10px 0;"><b>lico</b></p>
+        </div>
+
+    <div style="background: white; padding: 12px; border-radius: 12px;">
+        <img src="images/margaret.jpg" alt="margaret" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px;">
+        <p style="margin: 10px 0;"><b>Margaret</b></p>
+        <p>Nah, kalau yang ini si Margaret! kalian pasti udah pada tau kaan.
+            Sebagai penunggu area kampus, 
+            penampilannya kaya rapi banget mirip pakai jas hitam-putih lengkap sama kaus kaki putih mulus wkwk. 
+            Margaret selalu punya aura sendiri di antara kucing-kucing kampus yang lain, tapi hati hati yaa kalau 
+            si margaret ini udah mulai nempel sama kamu, dia suka pipis sembarangan soalnya.. </p>
+    </div>
+
+    <div style="background: white; padding: 12px; border-radius: 12px;">
+        <img src="images/gembul.jpg" alt="kucing gembul" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px;">
+        <p style="margin: 10px 0;"><b>si gembul</b></p>
+        <p>kalau ini si gembul, Kucing orange-putih yang baru aku liat pertama kali di depan rumah 
+            badannya ngelipat rapi banget sampai kelihatan kayak gumpalan roti wkwk. 
+            Mukanya meram-melek kaya nahan ngantuk gitu, karna emang masi pagi dia udah duduk didepan rumah aja.</p>
+    </div>
+
+        <div style="background: white; padding: 12px; border-radius: 12px;">
+            <img src="images/mujaer.jpg" alt="Kucing mujaer" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px;">
+            <p style="margin: 10px 0 0 0;"><b>mujaer</b></p>
+        </div>
+
+        <div style="background: white; padding: 12px; border-radius: 12px;">
+            <img src="images/gepeng.jpg" alt="Kucing sedang tiduran" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px;">
+            <p style="margin: 10px 0 0 0;"><b>gepeng</b></p>
+        </div>
+
+        <div style="background: white; padding: 12px; border-radius: 12px;">
+            <img src="images/susu.jpg" alt="kucing belang" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px;">
+            <p style="margin: 10px 0 0 0;"><b>belang</b></p>
+        </div>
+
+        <div style="background: white; padding: 12px; border-radius: 12px;">
+            <img src="images/penunggu.jpg" alt="Kucing penunggu" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px;">
+            <p style="margin: 10px 0;"><b>ucil</b></p>
+            <p>Nah, ini dia si kucing setia! 
+            Kucing corak abu-hitam yang selalu siaga tiap pagi pas aku mau berangkat kuliah. 
+            duduknya gaya banget tegak lurus di samping ban motor gitu, kaki depan rapat, dan mukanya agak 'jutek' dan 'ngantuk' belum ngopi. 
+            dia kaya lagi ngejalanin tugas gitu: memastikan aku gak terlambat kelas pagi sambil minta imbalan wishkas waktu aku pulang nanti wkwk.</p>
+        </div>
+</div>
+</div>
+
+<!--form-->
+
+<div id="page-registration" class="page" style="display: none;">
+<div style="background: white; padding: 25px; border-radius: 12px; max-width: 650px; margin: 0 auto;">
+    <h2 style="margin-top: 0;">Ayo Kirim Foto Kucing Mu!!</h2>
+    <p>Isi formulir berikut jika ingin berbagi kisah kucing yang kamu temui.</p>
+        <form id="formDaftar">
+            <label for="email_reg" style="display: block; margin-top: 12px; font-weight: bold;">Email</label>
+            <input type="email" id="email_reg" required placeholder="nama@email.com" 
+            style="width: 100%; 
+            padding: 11px; 
+            margin-top: 5px; 
+            border: 1px solid #cdb9a7; 
+            border-radius: 7px; 
+            box-sizing: border-box;">
+
+            <label for="asal" style="display: block; margin-top: 12px; font-weight: bold;">Nama/Julukan si Meng</label>
+            <input type="text" id="nama" required placeholder="nama/julukan kucing" 
+            style="width: 100%; 
+            padding: 11px; 
+            margin-top: 5px; 
+            border: 1px solid #cdb9a7; 
+            border-radius: 7px; 
+            box-sizing: border-box;">
+
+            <label for="lokasi" style="display: block; margin-top: 12px; font-weight: bold;">lokasi ketemu</label>
+            <input type="text" id="lokasi" required placeholder="contoh: sekitar kampus"
+            style="width: 100%; 
+            padding: 11px; 
+            margin-top: 5px; 
+            border: 1px solid #cdb9a7; 
+            border-radius: 7px; 
+            box-sizing: border-box;">
+
+            <label for="foto-kucing" style="display: block; margin-top: 12px; font-weight: bold;">Kirim Foto</label>
+            <input type="file" id="foto-kucing" accept="image/*" 
+            required style="width: 100%;
+            padding: 11px;
+            margin-top: 5px;
+            border: 1px dashed #a66b43;
+            background: #fff8ed;
+            border-radius: 7px; 
+            box-sizing: border-box; 
+            cursor: pointer;">
+            <small style="color: #68452f; 
+            display: block; 
+            margin-top: 4px;">type format: JPG, PNG, WEBP</small>
+
+            <label for="cerita" style="display: block; margin-top: 12px; font-weight: bold;">cerita singkat si meng yang kalian temui</label>
+            <textarea id="cerita" required placeholder="tulis cerita singkat atau kelakuan random pas kamu ambil gambar si meng.." 
+            style="width: 100%; 
+            padding: 11px; 
+            margin-top: 5px; 
+            border: 1px solid #cdb9a7; 
+            border-radius: 7px; 
+            box-sizing: border-box; 
+            font: inherit; 
+            min-height: 100px; 
+            resize: vertical;"></textarea>
+ 
+</select>
+
+        <button type="submit" 
+        style="margin-top: 20px; 
+        padding: 12px 20px; 
+        background: #a66b43; 
+        color: white; 
+        border: none; 
+        border-radius: 7px; 
+        cursor: pointer;">Kirim formulir</button>
+    </form>
+</div>
+</div>
+
+<!--halaman kontak-->
+
+    <div id="page-contact" class="page" style="display: none;">
+    <div style="background: white; padding: 25px; border-radius: 12px; max-width: 650px; margin: 0 auto;">
+        <h2 style="margin-top: 0;">Hubungi Kami</h2>
+        <p>Punya cerita, foto, atau pertanyaan tentang Ruang Meong? Kamu bisa menghubungi kami melalui informasi berikut.</p>
+        <p><b>kontak: </b>085817582867</p>
+        <hr style="border: 0; border-top: 1px solid #cdb9a7; margin: 20px 0;">
+        <h3>Kirim Pesan</h3>
+
+    <form id="formKontak">
+        <label for="nama_ktk" style="display: block; margin-top: 12px; font-weight: bold;">Nama Kamu</label>
+        <input type="text" id="nama_ktk" required placeholder="Masukkan nama kamu" 
+        style="width: 100%; 
+        padding: 11px; 
+        margin-top: 5px; 
+        border: 1px solid #cdb9a7; 
+        border-radius: 7px; 
+        box-sizing: border-box; 
+        font: inherit;">
+
+        <label for="email_ktk" style="display: block; margin-top: 12px; font-weight: bold;">Email</label>
+        <input type="email" id="email_ktk" required placeholder="Masukkan email kamu" 
+        style="width: 100%; 
+        padding: 11px; 
+        margin-top: 5px; 
+        border: 1px solid #cdb9a7; 
+        border-radius: 7px; 
+        box-sizing: border-box; 
+        font: inherit;">
+
+        <label for="pesan" style="display: block; margin-top: 12px; font-weight: bold;">Pesan</label>
+        <textarea id="pesan" required placeholder="Tulis pesan kamu di sini" 
+        style="width: 100%; 
+        padding: 11px; 
+        margin-top: 5px; 
+        border: 1px solid #cdb9a7; 
+        border-radius: 7px; 
+        box-sizing: border-box; 
+        font: inherit; min-height: 
+        120px; resize: vertical;"></textarea>
+
+    <button type="submit" 
+    style="margin-top: 20px; 
+    padding: 12px 20px; 
+    background: #a66b43; 
+    color: white; 
+    border: none; 
+    border-radius: 7px; 
+    cursor: pointer;">Kirim Pesan</button>
+    </form>
+</div>
+</div>
+
+    <!--footer-->
+
+    <footer style="background: #68452f; color: white; text-align: center; padding: 20px; margin-top: 30px;">
+        <p style="margin: 0; font-size: small;">&copy; 2026 Ruang Meong | Design by: Fauziyyah Nurzahra-12402051050128</p>
+    </footer>
+
+    <!--javascrip-->
+
+    <script>
+        
+        function tampilkanHalaman(pageId) {
+            let allPages = document.querySelectorAll('.page');
+            allPages.forEach(page => {
+                page.style.display = 'none';
+            });
+            let targetPage = document.getElementById('page-' + pageId);
+            if(targetPage) {
+                targetPage.style.display = 'block';
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function perbaruiJam() {
+            let sekarang = new Date();
+            let elJam = document.getElementById("jam");
+            if(elJam) {
+                elJam.innerHTML = sekarang.toLocaleTimeString("id-ID");
+            }
+        }
+        perbaruiJam();
+        setInterval(perbaruiJam, 1000);
+        document.getElementById("formDaftar").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Terima kasih sudah mendaftar di Ruang Meong!");
+            this.reset();
+        });
+
+        document.getElementById("formKontak").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Terima kasih! Pesan kamu sudah diterima.");
+            this.reset();
+        });
+
+        window.addEventListener('load', function() {
+            let hash = window.location.hash.substring(1);
+            if(hash) {
+                tampilkanHalaman(hash);
+            }
+        });
+    </script>
+
+</body>
+</html>
