@@ -376,26 +376,25 @@
             event.preventDefault();
             alert("Terima kasih sudah membagikan cerita meng di Ruang Meong!");
             this.reset();
-        });
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').replace('#', '');
+        // Skrip Navigasi Menu (SPA)
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').replace('#', '');
         
+        // Sembunyikan semua halaman
         document.querySelectorAll('.page').forEach(page => {
             page.style.display = 'none';
         });
         
+        // Tampilkan halaman yang diklik
         const targetPage = document.getElementById('page-' + targetId);
         if (targetPage) {
             targetPage.style.display = 'block';
         }
     });
 });
-        document.alert("Terima kasih! Pesan kamu sudah diterima.");
-            this.reset();
-        });
-
+            
         window.addEventListener('load', function() {
             let hash = window.location.hash.substring(1);
             if(hash) {
