@@ -216,7 +216,10 @@
 <div style="background: white; padding: 25px; border-radius: 12px; max-width: 650px; margin: 0 auto;">
     <h2 style="margin-top: 0;">Ayo Kirim Foto Kucing Mu!!</h2>
     <p>Isi formulir berikut jika ingin berbagi kisah kucing yang kamu temui.</p>
-        <form id="formDaftar">
+    
+        <form id="formDaftar" action="https://api.web3forms.com/submit" method="post">
+            <input type="hidden" name="access_key" value="2808b371-7367-457d-a8fd-7f77b54d7566">
+            
             <label for="email_reg" style="display: block; margin-top: 12px; font-weight: bold;">Email</label>
             <input type="email" id="email_reg" required placeholder="nama@email.com" 
             style="width: 100%; 
