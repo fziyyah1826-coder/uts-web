@@ -23,18 +23,27 @@
 <body style="margin: 0; font-family: Arial, sans-serif; 
     background: #fff8ed; color: #49372b; line-height: 1.6;"
     onload="
-    setInterval(function(){ 
-        var el = document.getElementById('jam'); 
-        if(el) el.innerHTML = new Date().toLocaleTimeString('id-ID'); 
-    }, 1000); 
-    if(window.location.hash){ 
-        var target = document.getElementById('page-' + window.location.hash.substring(1)); 
-        if(target){ 
-            document.querySelectorAll('.page').forEach(function(p){ p.style.display='none'; }); 
-            target.style.display='block'; 
-        }">
+        setInterval(function() {
+            let el = document.getElementById('jam');
+            if(el) {
+                el.innerHTML = new Date().toLocaleTimeString('id-ID');
+            }
+        }, 1000);
 
-    <!--header-->
+        let hash = window.location.hash.substring(1);
+        if(hash) {
+            let target = document.getElementById('page-' + hash);
+            if(target) {
+                document.querySelectorAll('.page').forEach(function(p) { 
+                    p.style.display = 'none'; 
+                });
+                target.style.display = 'block';
+                window.scrollTo(0, 0);
+            }
+        }
+      ">
+
+    <!--bagian header-->
 
     <header style="background: #a66b43; color: white; text-align: center; padding: 25px;">
         <h1 style="margin: 0;">🐾 Ruang Meong</h1>
