@@ -20,7 +20,19 @@
 
 </head>
 
-<body style="margin: 0; font-family: Arial, sans-serif; background: #fff8ed; color: #49372b; line-height: 1.6;">
+<body style="margin: 0; font-family: Arial, sans-serif; 
+    background: #fff8ed; color: #49372b; line-height: 1.6;"
+    onload="
+    setInterval(function(){ 
+        var el = document.getElementById('jam'); 
+        if(el) el.innerHTML = new Date().toLocaleTimeString('id-ID'); 
+    }, 1000); 
+    if(window.location.hash){ 
+        var target = document.getElementById('page-' + window.location.hash.substring(1)); 
+        if(target){ 
+            document.querySelectorAll('.page').forEach(function(p){ p.style.display='none'; }); 
+            target.style.display='block'; 
+        }">
 
     <!--header-->
 
@@ -255,7 +267,10 @@
     <h2 style="margin-top: 0;">Ayo Kirim Foto Kucing Mu!!</h2>
     <p>Isi formulir berikut jika ingin berbagi kisah kucing yang kamu temui.</p>
 
-        <form id="formDaftar" action="https://api.web3forms.com/submit" method="post">
+        <form onsubmit="event.preventDefault(); 
+        alert('Terima kasih! Pesan kamu sudah diterima.'); 
+        this.reset();
+        id="formDaftar" action="https://api.web3forms.com/submit" method="post">
             <input type="hidden" name="access_key" value="2808b371-7367-457d-a8fd-7f77b54d7566">
 
             <label for="email_reg" style="display: block; 
@@ -349,7 +364,10 @@
         <hr style="border: 0; border-top: 1px solid #cdb9a7; margin: 20px 0;">
         <h3>Kirim Pesan</h3>
 
-    <form id="formKontak" action="https://api.web3forms.com/submit" method="post">
+    <form onsubmit="event.preventDefault(); 
+        alert('Terima kasih! Pesan kamu sudah diterima.'); 
+        this.reset();" 
+        id="formKontak" action="https://api.web3forms.com/submit" method="post">
         <input type="hidden" name="access_key" value="2808b371-7367-457d-a8fd-7f77b54d7566">
 
         <label for="nama_ktk" style="display: block; 
@@ -410,88 +428,5 @@
         <p id="jam" style="margin-bottom: 0; font-weight: bold;">Memuat jam...</p>
     </footer>
     </aside>
-
-
-    <!--javascrip-->
-
-    <script>
-
-        function tampilkanHalaman(pageId) {
-            let allPages = document.querySelectorAll('.page');
-            allPages.forEach(page => {
-                page.style.display = 'none';
-            });
-            let targetPage = document.getElementById('page-' + pageId);
-            if(targetPage) {
-                targetPage.style.display = 'block';
-                window.scrollTo(0, 0);
-            }
-        }
-
-        function perbaruiJam() {
-            let sekarang = new Date();
-            let elJam = document.getElementById("jam");
-            if(elJam) {
-                elJam.innerHTML = sekarang.toLocaleTimeString("id-ID");
-            }
-        }
-        perbaruiJam();
-        setInterval(perbaruiJam, 1000);
-        document.getElementById("formDaftar").addEventListener("submit", function(event) {
-            event.preventDefault();
-            alert("Terima kasih sudah mendaftar di Ruang Meong!");
-            this.reset();
-        });
-
-        document.getElementById("formKontak").addEventListener("submit", function(event) {
-            alert("Terima kasih! Pesan kamu sudah diterima.");
-            this.reset();
-        });
-
-        window.addEventListener('load', function() {
-            let hash = window.location.hash.substring(1);
-            if(hash) {
-                tampilkanHalaman(hash);
-            }
-        });
-
-        const form = document.getElementById('form');
-const submitBtn = form.querySelector('button[type="submit"]');
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-    formData.append("access_key", "a45f64f7-f9d0-468a-8b40-5fdd148a249a");
-
-    const originalText = submitBtn.textContent;
-
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
-
-    try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert("Success! Your message has been sent.");
-            form.reset();
-        } else {
-            alert("Error: " + data.message);
-        }
-
-    } catch (error) {
-        alert("Something went wrong. Please try again.");
-    } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }
-});
-    </script>
-
 </body>
 </html>
