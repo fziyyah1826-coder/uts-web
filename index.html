@@ -30,17 +30,18 @@
             }
         }, 1000);
 
-        let hash = window.location.hash.substring(1);
-        if(hash) {
-            let target = document.getElementById('page-' + hash);
-            if(target) {
-                document.querySelectorAll('.page').forEach(function(p) { 
-                    p.style.display = 'none'; 
-                });
-                target.style.display = 'block';
-                window.scrollTo(0, 0);
-            }
-        }
+        function tampilkanHalaman(pageId) {
+        // 1. Sembunyikan semua halaman
+        let allPages = document.querySelectorAll('.page');
+        allPages.forEach(page => {
+            page.style.display = 'none';
+        });
+
+        let targetPage = document.getElementById('page-' + pageId);
+        if (targetPage) {
+            targetPage.style.display = 'block';
+            window.scrollTo(0, 0);
+        }}
       ">
 
     <!--bagian header-->
