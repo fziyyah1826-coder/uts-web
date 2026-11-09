@@ -21,14 +21,7 @@
 </head>
 
 <body style="margin: 0; font-family: Arial, sans-serif; 
-    background: #fff8ed; color: #49372b; line-height: 1.6;"
-    onload="
-       setInterval(function() {
-            let el = document.getElementById('jam');
-            if(el) {
-                el.innerHTML = new Date().toLocaleTimeString('id-ID');
-            }
-        }, 1000);>
+    background: #fff8ed; color: #49372b; line-height: 1.6;>
            
     <!-- bagian header -->
 
@@ -446,6 +439,27 @@
                 window.scrollTo(0, 0);
             }
         }
+
+        function perbaruiJam() {
+            let sekarang = new Date();
+            let elJam = document.getElementById("jam");
+            if(elJam) {
+                elJam.innerHTML = sekarang.toLocaleTimeString("id-ID");
+            }
+        }
+        perbaruiJam();
+        setInterval(perbaruiJam, 1000);
+        document.getElementById("formDaftar").addEventListener("submit", function(event) {
+            alert("Terima kasih sudah mendaftar di Ruang Meong!");
+            this.reset();
+        });
+
+        document.getElementById("formKontak").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Terima kasih! Pesan kamu sudah diterima.");
+            this.reset();
+        });
+
         window.addEventListener('load', function() {
             let hash = window.location.hash.substring(1);
             if(hash) {
