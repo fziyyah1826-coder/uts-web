@@ -23,25 +23,24 @@
 <body style="margin: 0; font-family: Arial, sans-serif; 
     background: #fff8ed; color: #49372b; line-height: 1.6;"
     onload="
-        setInterval(function() {
+       setInterval(function() {
             let el = document.getElementById('jam');
             if(el) {
                 el.innerHTML = new Date().toLocaleTimeString('id-ID');
             }
         }, 1000);
 
-        function tampilkanHalaman(pageId) {
-        // 1. Sembunyikan semua halaman
-        let allPages = document.querySelectorAll('.page');
-        allPages.forEach(page => {
-            page.style.display = 'none';
-        });
-
-        let targetPage = document.getElementById('page-' + pageId);
-        if (targetPage) {
-            targetPage.style.display = 'block';
-            window.scrollTo(0, 0);
-        }}
+        let hash = window.location.hash.substring(1);
+        if(hash) {
+            let target = document.getElementById('page-' + hash);
+            if(target) {
+                document.querySelectorAll('.page').forEach(function(p) { 
+                    p.style.display = 'none'; 
+                });
+                target.style.display = 'block';
+                window.scrollTo(0, 0);
+            }
+        }
       ">
 
     <!--bagian header-->
