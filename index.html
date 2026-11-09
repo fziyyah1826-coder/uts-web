@@ -28,22 +28,9 @@
             if(el) {
                 el.innerHTML = new Date().toLocaleTimeString('id-ID');
             }
-        }, 1000);
-
-        let hash = window.location.hash.substring(1);
-        if(hash) {
-            let target = document.getElementById('page-' + hash);
-            if(target) {
-                document.querySelectorAll('.page').forEach(function(p) { 
-                    p.style.display = 'none'; 
-                });
-                target.style.display = 'block';
-                window.scrollTo(0, 0);
-            }
-        }
-      ">
-
-    <!--bagian header-->
+        }, 1000);>
+           
+    <!-- bagian header -->
 
     <header style="background: #a66b43; color: white; padding: 25px;">
         <p id="jam" style="margin-bottom: 0; font-weight: bold; text-align: left;">Memuat jam...</p>
@@ -434,7 +421,7 @@
     </form>
 </div>
 </div>
-
+    
     <!--footer-->
 
     <aside style="background: #f3dfc8; padding: 20px; 
@@ -446,4 +433,24 @@
     </footer>
     </aside>
 </body>
+
+    <script>
+         function tampilkanHalaman(pageId) {
+            let allPages = document.querySelectorAll('.page');
+            allPages.forEach(page => {
+                page.style.display = 'none';
+            });
+            let targetPage = document.getElementById('page-' + pageId);
+            if(targetPage) {
+                targetPage.style.display = 'block';
+                window.scrollTo(0, 0);
+            }
+        }
+        window.addEventListener('load', function() {
+            let hash = window.location.hash.substring(1);
+            if(hash) {
+                tampilkanHalaman(hash);
+            }
+        });
+    </script>
 </html>
